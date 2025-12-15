@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_main.xml - 主界面布局文件
+    
+    界面结构说明：
+    ┌─────────────────────────────────┐
+    │           标题区域              │
+    ├─────────────────────────────────┤
+    │       服务器连接配置区域         │
+    ├─────────────────────────────────┤
+    │                                 │
+    │         对话历史列表            │
+    │        (RecyclerView)           │
+    │                                 │
+    ├─────────────────────────────────┤
+    │       状态提示 + 语音按钮        │
+    └─────────────────────────────────┘
+    
+    使用 ConstraintLayout 实现灵活布局
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <!-- ========================================== -->
+    <!-- 顶部标题区域                               -->
+    <!-- ========================================== -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/primary"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- 主标题 -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_main"
+            android:textColor="@color/text_on_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- 副标题说明 -->
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle_main"
+            android:textColor="@color/text_on_primary"
+            android:textSize="14sp"
+            android:alpha="0.8"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+    <!-- ========================================== -->
+    <!-- 服务器连接配置区域                         -->
+    <!-- ========================================== -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardServerConfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- 服务器地址输入框 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilServerUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_server_url"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etServerUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textUri"
+                    android:text="http://localhost:8000" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 连接状态和按钮 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp">
+
+                <!-- 连接状态指示器 -->
+                <View
+                    android:id="@+id/viewConnectionStatus"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/bg_status_indicator" />
+
+                <!-- 连接状态文字 -->
+                <TextView
+                    android:id="@+id/tvConnectionStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/status_disconnected"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp" />
+
+                <!-- 连接/断开按钮 -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnConnect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_connect"
+                    style="@style/Widget.Material3.Button.TonalButton" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ========================================== -->
+    <!-- 对话历史列表区域                           -->
+    <!-- ========================================== -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChatHistory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:clipToPadding="false"
+        android:paddingVertical="8dp"
+        app:layout_constraintTop_toBottomOf="@id/cardServerConfig"
+        app:layout_constraintBottom_toTopOf="@id/bottomContainer"
+        tools:listitem="@layout/item_chat_message" />
+
+    <!-- ========================================== -->
+    <!-- 底部操作区域（状态提示 + 语音按钮）        -->
+    <!-- ========================================== -->
+    <LinearLayout
+        android:id="@+id/bottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        android:background="@color/surface"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- 当前状态提示 -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_disconnected"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 语音输入按钮 -->
+        <ImageButton
+            android:id="@+id/btnSpeak"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_speak_button"
+            android:src="@drawable/ic_mic"
+            android:contentDescription="@string/btn_speak"
+            android:enabled="false"
+            android:scaleType="center" />
+
+        <!-- 按钮提示文字 -->
+        <TextView
+            android:id="@+id/tvSpeakHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_speak"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

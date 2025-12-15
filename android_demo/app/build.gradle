@@ -1,0 +1,100 @@
+/*
+ * 应用模块级 build.gradle
+ * 配置 Android 应用的编译选项、依赖项等
+ * 
+ * 核心依赖说明：
+ * - OkHttp: 网络请求库，用于与 AIstudio 服务器通信
+ * - RecyclerView: 用于显示对话历史列表
+ * - 无需额外语音识别库，使用 Android 系统自带的语音识别服务
+ */
+
+plugins {
+    // 应用 Android 应用插件
+    id 'com.android.application'
+}
+
+android {
+    // 命名空间，用于生成 R 类
+    namespace 'com.autoglm.phonedemo'
+    
+    // 编译使用的 SDK 版本（Android 13）
+    compileSdk 34
+
+    defaultConfig {
+        // 应用唯一标识符
+        applicationId "com.autoglm.phonedemo"
+        
+        // 最低支持的 Android 版本（Android 7.0）
+        // 与 Open-AutoGLM 项目要求一致
+        minSdk 24
+        
+        // 目标 SDK 版本（Android 14）
+        targetSdk 34
+        
+        // 应用版本号
+        versionCode 1
+        versionName "1.0.0"
+
+        // 测试配置
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            // 正式版不启用代码混淆（demo 简化）
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // 调试版配置
+            debuggable true
+        }
+    }
+    
+    // Java 版本配置
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    // 启用 ViewBinding（简化视图绑定）
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    // =====================================================
+    // AndroidX 核心库
+    // =====================================================
+    
+    // AppCompat - 提供向后兼容的 UI 组件
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    
+    // Material Design 组件库 - 提供现代 UI 组件
+    implementation 'com.google.android.material:material:1.11.0'
+    
+    // ConstraintLayout - 灵活的布局管理器
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    
+    // RecyclerView - 用于显示对话历史列表
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    
+    // =====================================================
+    // 网络请求相关
+    // =====================================================
+    
+    // OkHttp - HTTP 客户端，用于与服务器通信
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    
+    // Gson - JSON 解析库
+    implementation 'com.google.code.gson:gson:2.10.1'
+    
+    // =====================================================
+    // 测试依赖（可选）
+    // =====================================================
+    
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

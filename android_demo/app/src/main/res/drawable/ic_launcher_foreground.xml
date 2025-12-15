@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_launcher_foreground.xml - 启动图标前景层
+    
+    包含一个简单的机器人/手机图标
+    在自适应图标中显示在背景层之上
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- 手机外框 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,26h24c2.2,0 4,1.8 4,4v48c0,2.2 -1.8,4 -4,4h-24c-2.2,0 -4,-1.8 -4,-4v-48c0,-2.2 1.8,-4 4,-4z"/>
+    
+    <!-- 屏幕 -->
+    <path
+        android:fillColor="@color/primary_dark"
+        android:pathData="M42,32h24v40h-24z"/>
+    
+    <!-- Home 按钮 -->
+    <circle
+        android:fillColor="#E0E0E0"
+        android:cx="54"
+        android:cy="76"
+        android:r="3"/>
+    
+    <!-- AI 标识 - 星号 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,47l1.5,4.5l4.5,0l-3.5,2.5l1.5,4.5l-4,-3l-4,3l1.5,-4.5l-3.5,-2.5l4.5,0z"/>
+    
+</vector>

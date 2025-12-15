@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    strings.xml - 字符串资源文件
+    
+    集中管理应用中所有的文字内容
+    便于后续做多语言支持
+-->
+<resources>
+    <!-- 应用名称 -->
+    <string name="app_name">AutoGLM 手机助手</string>
+    
+    <!-- 主界面文字 -->
+    <string name="title_main">AutoGLM 语音助手</string>
+    <string name="subtitle_main">按住按钮说话，AI 帮你操控手机</string>
+    <string name="btn_speak">按住说话</string>
+    <string name="btn_speaking">正在录音...</string>
+    <string name="hint_server_url">请输入服务器地址 (如: http://xxx:8000)</string>
+    <string name="btn_connect">连接服务器</string>
+    <string name="btn_disconnect">断开连接</string>
+    
+    <!-- 状态提示 -->
+    <string name="status_disconnected">未连接服务器</string>
+    <string name="status_connecting">正在连接服务器...</string>
+    <string name="status_connected">已连接服务器</string>
+    <string name="status_error">连接失败</string>
+    <string name="status_processing">AI 正在处理...</string>
+    <string name="status_executing">正在执行操作...</string>
+    
+    <!-- 无障碍服务 -->
+    <string name="accessibility_service_label">AutoGLM 自动化服务</string>
+    <string name="accessibility_service_description">此服务用于执行 AI 生成的手机操作指令，包括点击、滑动、输入文字等。请在系统设置中开启此服务。</string>
+    
+    <!-- 对话消息 -->
+    <string name="msg_user">我</string>
+    <string name="msg_assistant">AI</string>
+    
+    <!-- 错误提示 -->
+    <string name="error_no_speech_service">设备不支持语音识别</string>
+    <string name="error_network">网络连接失败，请检查网络</string>
+    <string name="error_server">服务器错误：%s</string>
+    <string name="error_permission_denied">权限被拒绝，无法使用语音功能</string>
+    <string name="error_accessibility_not_enabled">请先开启无障碍服务</string>
+    
+    <!-- 提示信息 -->
+    <string name="toast_connected">服务器连接成功</string>
+    <string name="toast_disconnected">已断开连接</string>
+    <string name="toast_action_completed">操作执行完成</string>
+    <string name="toast_enable_accessibility">请在设置中开启 AutoGLM 无障碍服务</string>
+    
+    <!-- 设置页面 -->
+    <string name="settings_title">设置</string>
+    <string name="settings_server_url">服务器地址</string>
+    <string name="settings_server_url_summary">AIstudio 部署的 server.py 地址</string>
+</resources>
