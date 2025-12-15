@@ -345,9 +345,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         
-        // 更新状态指示器颜色
-        GradientDrawable background = (GradientDrawable) binding.viewConnectionStatus.getBackground();
-        background.setColor(statusColor);
+        // 更新状态指示器颜色（安全类型检查）
+        if (binding.viewConnectionStatus.getBackground() instanceof GradientDrawable) {
+            GradientDrawable background = (GradientDrawable) binding.viewConnectionStatus.getBackground();
+            background.setColor(statusColor);
+        }
         
         // 更新状态文字
         binding.tvConnectionStatus.setText(statusText);

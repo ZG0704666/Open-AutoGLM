@@ -528,8 +528,16 @@ public class AutomationAccessibilityService extends AccessibilityService {
     /**
      * 执行文字输入操作
      * 
-     * 注意：Android 无障碍服务的文字输入有限制
-     * 推荐使用 ADB Keyboard 或剪贴板方式输入
+     * ⚠️ 重要限制说明：
+     * Android 无障碍服务本身不支持直接向文本框输入文字。
+     * 本方法采用剪贴板方案：将文字复制到剪贴板，用户需要手动粘贴。
+     * 
+     * 完整的自动化文字输入解决方案：
+     * 1. 使用 ADB Keyboard（推荐）- Open-AutoGLM 主项目采用的方案
+     * 2. 通过 ADB 命令输入：adb shell input text "内容"
+     * 3. 使用 Android 输入法框架（需要开发自定义输入法）
+     * 
+     * 本 Demo 为最小化实现，完整功能请参考 Open-AutoGLM 主项目
      * 
      * @param text 要输入的文字
      * @param callback 执行结果回调
@@ -537,18 +545,18 @@ public class AutomationAccessibilityService extends AccessibilityService {
     private void executeType(String text, MainActivity.ActionExecutionCallback callback) {
         Log.d(TAG, "输入文字: " + text);
         
-        // 方法1: 通过剪贴板粘贴（推荐）
+        // 通过剪贴板方式（Demo 简化实现）
+        // 将文字复制到剪贴板，用户可以手动长按粘贴
         android.content.ClipboardManager clipboard = 
             (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         android.content.ClipData clip = android.content.ClipData.newPlainText("text", text);
         clipboard.setPrimaryClip(clip);
         
-        // 提示用户手动粘贴或配合 ADB Keyboard 使用
-        callback.onActionCompleted(true, "文字已复制到剪贴板，请手动粘贴或使用 ADB Keyboard");
-        
-        // 注意：完整的文字输入需要配合 ADB 命令
-        // 在 Open-AutoGLM 项目中，文字输入是通过 ADB Keyboard 实现的
-        // 此 Demo 仅演示基本功能，生产环境建议集成 ADB 命令执行
+        // 返回成功，但提示用户需要手动粘贴
+        // 生产环境建议：
+        // 1. 集成 ADB Keyboard 自动输入
+        // 2. 或通过 ADB shell 命令执行 input text
+        callback.onActionCompleted(true, "文字「" + text + "」已复制到剪贴板，请长按输入框粘贴");
     }
     
     /**
