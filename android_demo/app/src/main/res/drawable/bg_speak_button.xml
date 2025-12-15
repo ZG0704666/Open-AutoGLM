@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_speak_button.xml - 语音按钮背景
+    
+    圆形按钮背景，带有状态切换效果
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- 按下状态 - 红色（录音中） -->
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <solid android:color="@color/btn_speak_pressed" />
+            <size android:width="80dp" android:height="80dp" />
+        </shape>
+    </item>
+    
+    <!-- 禁用状态 - 灰色 -->
+    <item android:state_enabled="false">
+        <shape android:shape="oval">
+            <solid android:color="@color/btn_speak_disabled" />
+            <size android:width="80dp" android:height="80dp" />
+        </shape>
+    </item>
+    
+    <!-- 默认状态 - 蓝色 -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/btn_speak_normal" />
+            <size android:width="80dp" android:height="80dp" />
+        </shape>
+    </item>
+    
+</selector>

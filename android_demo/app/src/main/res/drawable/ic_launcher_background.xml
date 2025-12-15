@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_launcher_background.xml - 启动图标背景层
+    
+    简单的蓝色圆形背景
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/primary"/>
+</shape>

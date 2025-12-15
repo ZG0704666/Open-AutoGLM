@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    colors.xml - 颜色资源文件
+    
+    定义应用中使用的颜色值
+    使用 Material Design 风格的蓝色主题
+-->
+<resources>
+    <!-- 主题色 - 蓝色系 -->
+    <color name="primary">#1976D2</color>
+    <color name="primary_dark">#1565C0</color>
+    <color name="primary_light">#42A5F5</color>
+    <color name="accent">#FF4081</color>
+    
+    <!-- 背景色 -->
+    <color name="background">#FAFAFA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
+    
+    <!-- 文字颜色 -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#9E9E9E</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    
+    <!-- 状态颜色 -->
+    <color name="status_connected">#4CAF50</color>
+    <color name="status_disconnected">#F44336</color>
+    <color name="status_processing">#FF9800</color>
+    
+    <!-- 对话气泡颜色 -->
+    <color name="bubble_user">#E3F2FD</color>
+    <color name="bubble_assistant">#F5F5F5</color>
+    
+    <!-- 按钮颜色 -->
+    <color name="btn_speak_normal">#1976D2</color>
+    <color name="btn_speak_pressed">#D32F2F</color>
+    <color name="btn_speak_disabled">#BDBDBD</color>
+</resources>
